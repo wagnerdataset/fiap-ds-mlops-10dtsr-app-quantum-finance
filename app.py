@@ -3,7 +3,7 @@ import requests
 import json
 import locale
 
-st.image("images/quantum_banner_1.png", use_column_width=True)
+st.image("images/quantum_banner_2.png", caption="Quantum Finance – Inteligência em Crédito")
 
 def get_prediction(payload):
     endpoint = st.secrets["API-ENDPOINT"]
@@ -91,3 +91,11 @@ payload = {
 if st.button("📊 Estimar o credit score"):
     with st.spinner("Analisando informações e calculando valor estimado..."):
         get_prediction(payload)
+
+
+st.markdown("""
+---
+<div style="text-align: center; font-size: 14px;">
+    Desenvolvido por <strong>Wagner, Arthur, Gustavo e Eduardo</strong> e equipe Quantum Finance © 2025
+</div>
+""", unsafe_allow_html=True)
