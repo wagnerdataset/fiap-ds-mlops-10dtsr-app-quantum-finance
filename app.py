@@ -3,6 +3,11 @@ import requests
 import json
 import locale
 
+# Imagem institucional da Quantum Finance
+st.image("https://cdn.pixabay.com/photo/2018/03/11/09/34/money-3219294_1280.jpg", 
+         caption="Quantum Finance – Inteligência em Crédito", 
+         use_column_width=True)
+
 def get_prediction(payload):
     endpoint = st.secrets["API-ENDPOINT"]
     headers = {
@@ -27,7 +32,7 @@ def get_prediction(payload):
         st.error("Erro ao obter a previsão. Verifique os dados ou tente novamente mais tarde.")
 
 # Título e introdução
-st.title("💻 Avaliação Financeira")
+st.title("💻 Avaliação Financeira Quantum Finance")
 st.markdown("""
 Este aplicativo utiliza um modelo de machine learning para prever o **credit score do cliente**, 
 considerando o perfil financeiro e histórico de crédito do usuário.
