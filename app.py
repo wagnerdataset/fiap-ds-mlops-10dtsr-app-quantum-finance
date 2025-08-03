@@ -2,11 +2,16 @@ import streamlit as st
 import requests
 import json
 import locale
+import base64
 
 # Imagem institucional da Quantum Finance
-st.image("https://cdn.pixabay.com/photo/2018/03/11/09/34/money-3219294_1280.jpg", 
-         caption="Quantum Finance – Inteligência em Crédito", 
-         use_column_width=True)
+encoded_image = "iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAeFBMVEX///8AAADn5+eXl5eAgIDi4uK2trbm5ub39/dBQUEQEBCvr6+hoaGAfHx8ZGRkYGBg6OjqUlJR3d3cwMDB6enqoqKi/v78rKysWFhZubm6IiIh9fX3r6+uNjY1jY2NsYkQnJydzc3Nz8bE1AAADNElEQVR4nO3d63KjOhSGYaXREtKIiMULvf//yrqEUXd4JsZHNrnPM+ybRgGgM888wzD8F7mZ8m5XHYIvT9TWoFJZlWRalUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqlUqvVK6gK8kn3jf/f+T/h91W6W2SV9D++FhZ7vo9M7Jfb8WPqvcS2VNzuLzk5e/VcHaZWkJW9uUeU4qH5VeHRpWRO/fckqnyfkrvj4kKhPZ0ZSpLycPbHF05G5A3e3XsXNiD3s09TtRtVaW+31+8tKyz+8vS8pM7/P5UUp2vDE4NfI++3+vJm9rdgLf50ajFXe9b7PN4/UepZT7X+iyqGyv23YURH+v8+Etz8m/aY9Pbsv+co3oz/AUybBMMzj9e0AAAAASUVORK5CYII="
+
+st.image(
+    f"data:image/png;base64,{encoded_image}",
+    caption="Quantum Finance – Inteligência em Crédito",
+    use_column_width=True
+)
 
 def get_prediction(payload):
     endpoint = st.secrets["API-ENDPOINT"]
