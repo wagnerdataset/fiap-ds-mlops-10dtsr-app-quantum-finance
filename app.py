@@ -35,7 +35,7 @@ O objetivo é fornecer uma estimativa do valor que o cliente pode obter em um fi
 ajudando na tomada de decisões financeiras mais informadas.
 """)
 
-st.markdown("## 📋 Preencha os dados abaixo para estimar o valor:")
+st.markdown("## 📋 Preencha os dados abaixo para estimar o credit score:")
 
 # Entradas do usuário
 age = st.number_input("Idade do cliente", min_value=18, max_value=99, step=1, help="Idade do comprador no momento da avaliação.")
