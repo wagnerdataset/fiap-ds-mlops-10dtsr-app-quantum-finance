@@ -41,7 +41,17 @@ st.markdown("## 📋 Preencha os dados abaixo para estimar o credit score:")
 
 # Entradas do usuário
 age = st.number_input("Idade do cliente", min_value=18, max_value=99, step=1, help="Idade do comprador no momento da avaliação.")
-occupation = st.selectbox("Código da ocupação do cliente (1 a 14)", list(range(1, 15)), help="Classificação da ocupação de acordo com o sistema de categorias.")
+occupation_value = st.selectbox(
+    "Ocupação do cliente",
+    [
+        "1 - Executivo", "2 - Autônomo", "3 - CLT", "4 - Freelancer", "5 - Empresário",
+        "6 - Estudante", "7 - Aposentado", "8 - Servidor Público", "9 - Desempregado",
+        "10 - Técnico", "11 - Temporário", "12 - Agricultor", "13 - Doméstico", "14 - Outro"
+    ],
+    help="Classificação da ocupação de acordo com o sistema de categorias."
+)
+occupation = int(occupation_value.split(" - ")[0])
+
 income = st.number_input("Renda anual (em R$)", step=1000.0, help="Renda total estimada no ano.")
 bank_accounts = st.number_input("Número de contas bancárias", step=1, help="Contas ativas em bancos tradicionais ou digitais.")
 credit_cards = st.number_input("Número de cartões de crédito", step=1, help="Incluindo cartões de lojas e bancos.")
@@ -50,14 +60,28 @@ num_loans = st.number_input("Quantidade de empréstimos ativos", step=1, help="N
 delay_due = st.number_input("Dias de atraso mais recente", step=1, help="Último atraso registrado no pagamento.")
 delayed_payments = st.number_input("Número total de pagamentos atrasados", step=1, help="Inclui todos os atrasos históricos conhecidos.")
 credit_inquiries = st.number_input("Consultas recentes ao CPF", step=1, help="Quantidade de solicitações de crédito feitas por instituições.")
-credit_mix = st.selectbox("Qualidade do mix de crédito", [1, 2, 3], help="1 = Pobre, 2 = Médio, 3 = Bom.")
+
+credit_mix_value = st.selectbox(
+    "Qualidade do mix de crédito",
+    ["1 - Pobre", "2 - Médio", "3 - Bom"],
+    help="Classificação da variedade de produtos de crédito que o cliente possui."
+)
+credit_mix = int(credit_mix_value.split(" - ")[0])
+
 outstanding_debt = st.number_input("Dívida total em aberto (R$)", step=100.0, help="Soma de valores não quitados.")
 util_ratio = st.slider("Percentual de uso do limite de crédito (%)", 0.0, 100.0, 35.0, help="Quanto da linha de crédito o cliente utiliza.")
 history_age = st.number_input("Tempo de histórico de crédito (em meses)", step=1, help="Tempo desde a primeira operação de crédito.")
 min_payment = st.radio("O pagamento mínimo tem sido realizado?", ["Sim", "Não"], help="Indica se o usuário evita inadimplência.")
 total_emi = st.number_input("Total de parcelas mensais (EMI)", step=50.0, help="Soma dos compromissos mensais em aberto.")
 monthly_investment = st.number_input("Valor médio investido por mês (R$)", step=50.0, help="Inclui investimentos em renda fixa, variável etc.")
-payment_behaviour = st.selectbox("Comportamento de pagamento (1 a 5)", [1, 2, 3, 4, 5], help="1 = Excelente, 5 = Muito Ruim.")
+
+payment_behaviour_value = st.selectbox(
+    "Comportamento de pagamento",
+    ["1 - Excelente", "2 - Bom", "3 - Regular", "4 - Ruim", "5 - Muito Ruim"],
+    help="Nível de confiabilidade com base no histórico de pagamentos do cliente."
+)
+payment_behaviour = int(payment_behaviour_value.split(" - ")[0])
+
 monthly_balance = st.number_input("Saldo médio mensal restante (R$)", step=50.0, help="Média estimada do que sobra após os gastos mensais.")
 
 # Conversão dos campos categóricos
